@@ -14,7 +14,7 @@ from hhat_lang.toolchain.project.new import (
 )
 from hhat_lang.toolchain.project.run import run_project
 
-def get_proj_dir(): 
+def get_proj_dir() -> Path | None: 
     current = Path().absolute()
     while current != current.parent:
         if (current / "src" / "main.hat").exists():
@@ -119,12 +119,12 @@ def new(
                 proj_dir = get_proj_dir()
                 # Handle creation of parent directories
                 file_path = Path(file_name)
-                print((Path().absolute() / f"{file_path}.hat"))
-                if ((Path().absolute() / f"{file_path}.hat").is_file()):
+                print((proj_dir / f"{file_path}.hat"))
+                if ((proj_dir / f"{file_path}.hat").is_file()):
                   raise FileExistsError(f"File {file_path}.hat already exists")
                 if file_path.parent != Path("."):
                     file_path.parent.mkdir(parents=True, exist_ok=False)
-                create_new_file(Path().absolute(), f"{file_path}.hat")
+                create_new_file(proj_dir, f"{file_path}.hat")
                 console.print(Panel(
                     f"File [bold]{file_name}.hat[/bold] created successfully!",
                     title="✓ Success",
@@ -140,10 +140,8 @@ def new(
         
         elif type_file:
             proj_dir = get_proj_dir()
-            print(proj_dir)
-            # Create new type file
             try:
-                create_new_type_file(Path(type_file))
+                create_new_type_file(proj_dir, Path(type_file))
                 console.print(Panel(
                     f"Type file [bold]{type_file}.hat[/bold] created successfully!",
                     title="✓ Success",
