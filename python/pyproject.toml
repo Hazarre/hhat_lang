@@ -7,7 +7,7 @@ name = "hhat-lang"
 description = "H-hat quantum programming language core and rule system implemented in Python"
 dynamic = ["version"]
 authors = [
-    { name = "Eduardo Maschio", email = "eduardo.maschio@hhat-lang.org" }
+    { name = "Eduardo Maschio", email = "eduardo.maschio@hhat-lang.org" },
 ]
 readme = "README"
 requires-python = ">=3.12"
@@ -23,42 +23,47 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
 ]
+<<<<<<< HEAD
 dependencies = [
     "typer>=0.9.0",
     "rich>=13.0.0",
 ]
+=======
+dependencies = ["typer>=0.9.0", "rich>=13.0.0"]
+
+[project.scripts]
+hat = "hhat_lang.toolchain.cli.cli:main"
+>>>>>>> e73d4ee (add cli)
 
 [project.scripts]
 hat = "hhat_lang.toolchain.cli.cli:main"
 
 [project.optional-dependencies]
-heather = [
-    "arpeggio",
-    "pygments",
-]
+heather = ["arpeggio", "pygments"]
 
+<<<<<<< HEAD
 qiskit = [
     "qiskit",
     "qiskit-aer",
     "qiskit-ibm-runtime",
 ]
+=======
+qiskit = ["qiskit", "qiskit-ibm-runtime"]
+>>>>>>> e73d4ee (add cli)
 
-squidasm = [
-    "squidasm",
-    "netsquid",
-]
+squidasm = ["squidasm", "netsquid"]
 
-netqasm = [
-    "netqasm",
-]
+netqasm = ["netqasm"]
 
-openqasm2 = [
-    "hhat-lang[qiskit]",
-]
+openqasm2 = ["hhat-lang[qiskit]"]
 
+<<<<<<< HEAD
 all = [
     "hhat-lang[heather,qiskit,openqasm2]"
 ]
+=======
+all = ["hhat-lang[heather,qiskit,squidasm,netqasm,openqasm2]"]
+>>>>>>> e73d4ee (add cli)
 
 dev = [
     "mypy",
@@ -91,9 +96,7 @@ Issues = "https://github.com/hhat-lang/hhat_lang/issues"
 Documentation = "https://docs.hhat-lang.org"
 
 [tool.pytest.ini_options]
-addopts = [
-    "--import-mode=importlib",
-]
+addopts = ["--import-mode=importlib"]
 
 [tool.ruff]
 lint.select = ["E", "F", "I", "Q"]
@@ -110,4 +113,8 @@ required-imports = ["from __future__ import annotations"]
 python_version = "3.12"
 disable_error_code = ["import-untyped", "override", "misc", "attr-defined"]
 pretty = true
+<<<<<<< HEAD
 exclude = ["build", "tests"]
+=======
+exclude = "build"
+>>>>>>> e73d4ee (add cli)
