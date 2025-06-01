@@ -225,7 +225,8 @@ def run():
         hat run    # Run the current project
     """
     try:
-        proj_dir = get_proj_dir()
+        # make sure we are in the proj dir, throw err if not
+        get_proj_dir()
         run_project()
         console.print(
             Panel(

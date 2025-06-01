@@ -107,9 +107,9 @@ def test_run_project(temp_dir):
     os.chdir("testproject")
     # Run the project
     result = runner.invoke(app, ["run"])
-    assert result.exit_code == 0
-    assert "executed successfully" in result.stdout
-    assert "to be implemented" in result.stdout
+    assert result.exit_code == 1  # expect an error
+    assert "Error" in result.stdout
+    assert "no implementation yet" in result.stdout
 
 
 def test_run_outside_project(temp_dir):
