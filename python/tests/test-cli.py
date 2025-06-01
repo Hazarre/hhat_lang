@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-import pytest
-from pathlib import Path
-import os
-from typer.testing import CliRunner
-from hhat_lang.toolchain.cli.cli import app
-import shutil
-runner = CliRunner()
-
-=======
 from __future__ import annotations
 
 import os
@@ -21,7 +11,6 @@ from typer.testing import CliRunner
 runner = CliRunner()
 
 
->>>>>>> e73d4ee (add cli)
 @pytest.fixture
 def temp_dir():
     """Provide a temporary directory for tests"""
@@ -33,10 +22,7 @@ def temp_dir():
     os.chdir(original_cwd)
     shutil.rmtree(temp_dir)
 
-<<<<<<< HEAD
-=======
 
->>>>>>> e73d4ee (add cli)
 def test_help_command():
     """Test the help command displays all available commands"""
     result = runner.invoke(app, ["help"])
@@ -46,10 +32,7 @@ def test_help_command():
     assert "run" in result.stdout
     assert "help" in result.stdout
 
-<<<<<<< HEAD
-=======
 
->>>>>>> e73d4ee (add cli)
 def test_help_specific_command():
     """Test help for a specific command shows detailed information"""
     result = runner.invoke(app, ["help", "new"])
@@ -58,10 +41,7 @@ def test_help_specific_command():
     assert "--file" in result.stdout
     assert "--type" in result.stdout
 
-<<<<<<< HEAD
-=======
 
->>>>>>> e73d4ee (add cli)
 def test_create_new_project(temp_dir):
     """Test creating a new project succeeds"""
     result = runner.invoke(app, ["new", "testproject"])
@@ -70,10 +50,7 @@ def test_create_new_project(temp_dir):
     assert (Path() / "testproject").exists()
     assert (Path() / "testproject" / "src" / "main.hat").exists()
 
-<<<<<<< HEAD
-=======
 
->>>>>>> e73d4ee (add cli)
 def test_create_project_exists(temp_dir):
     """Test creating a project fails when directory exists"""
     runner.invoke(app, ["new", "testproject"])
@@ -83,10 +60,7 @@ def test_create_project_exists(temp_dir):
     assert "Error" in result.stdout
     assert "exists" in result.stdout
 
-<<<<<<< HEAD
-=======
 
->>>>>>> e73d4ee (add cli)
 def test_create_file_in_project(temp_dir):
     """Test creating a new file inside a project directory"""
     runner.invoke(app, ["new", "testproject"])
@@ -97,10 +71,7 @@ def test_create_file_in_project(temp_dir):
     assert "created successfully" in result.stdout
     assert (Path() / "module" / "testfile.hat").exists()
 
-<<<<<<< HEAD
-=======
 
->>>>>>> e73d4ee (add cli)
 def test_create_file_outside_project(temp_dir):
     """Test creating a file fails outside project directory"""
     result = runner.invoke(app, ["new", "-f", "testfile"])
@@ -108,10 +79,7 @@ def test_create_file_outside_project(temp_dir):
     assert "Error" in result.stdout
     assert "project directory" in result.stdout
 
-<<<<<<< HEAD
-=======
 
->>>>>>> e73d4ee (add cli)
 def test_create_existing_file(temp_dir):
     """Test creating a file fails when it already exists"""
     runner.invoke(app, ["new", "testproject"])
@@ -122,10 +90,7 @@ def test_create_existing_file(temp_dir):
     assert "Error" in result.stdout
     assert "already exists" in result.stdout
 
-<<<<<<< HEAD
-=======
 
->>>>>>> e73d4ee (add cli)
 def test_create_type_file(temp_dir):
     """Test creating a new type file inside a project directory"""
     runner.invoke(app, ["new", "testproject"])
@@ -135,10 +100,7 @@ def test_create_type_file(temp_dir):
     assert "created successfully" in result.stdout
     assert "customtype.hat" in result.stdout
 
-<<<<<<< HEAD
-=======
 
->>>>>>> e73d4ee (add cli)
 def test_run_project(temp_dir):
     """Test running a project with empty main.hat"""
     runner.invoke(app, ["new", "testproject"])
@@ -149,10 +111,7 @@ def test_run_project(temp_dir):
     assert "executed successfully" in result.stdout
     assert "to be implemented" in result.stdout
 
-<<<<<<< HEAD
-=======
 
->>>>>>> e73d4ee (add cli)
 def test_run_outside_project(temp_dir):
     """Test running outside a project directory fails"""
     result = runner.invoke(app, ["run"])
@@ -161,17 +120,10 @@ def test_run_outside_project(temp_dir):
     # We don't test for the exact error message since it's wrapped in a panel
     # and the formatting might change
 
-<<<<<<< HEAD
-=======
 
->>>>>>> e73d4ee (add cli)
 def test_version():
     """Test version flag shows version information"""
     result = runner.invoke(app, ["--version"])
     assert result.exit_code == 0
     assert "H-hat Language Toolchain" in result.stdout
-<<<<<<< HEAD
     assert "version" in result.stdout
-=======
-    assert "version" in result.stdout
->>>>>>> e73d4ee (add cli)
