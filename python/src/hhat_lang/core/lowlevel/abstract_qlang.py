@@ -26,7 +26,7 @@ class BaseLowLevelQLang(ABC):
 
     def __init__(
         self,
-        qvar: WorkingData,
+        qdata: WorkingData,
         code: IRBlock,
         idx: IndexManager,
         executor: BaseEvaluator,
@@ -34,7 +34,7 @@ class BaseLowLevelQLang(ABC):
         *_args: Any,
         **_kwargs: Any,
     ):
-        self._qdata = qvar
+        self._qdata = qdata
         self._code = code
         self._idx = idx
         self._executor = executor

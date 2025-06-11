@@ -249,8 +249,13 @@ class Heap(BaseHeap):
     def __init__(self):
         self._data = dict()
 
-    def set(self, key: Symbol, value: BaseDataContainer) -> None | HeapInvalidKeyError:
-        if not (isinstance(key, Symbol) and isinstance(value, BaseDataContainer)):
+    def set(
+        self, key: Symbol, value: BaseDataContainer | WorkingData
+    ) -> None | HeapInvalidKeyError:
+        if not (
+            isinstance(key, Symbol)
+            and isinstance(value, (BaseDataContainer, WorkingData))
+        ):
             return HeapInvalidKeyError(key=key)
 
         self._data[key] = value
